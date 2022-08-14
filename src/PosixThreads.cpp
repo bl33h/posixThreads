@@ -44,24 +44,26 @@ int main(){
     for (int i = 0; i < halfArr; i++){
         arr[i] = arr[i];
         printf("Numbers placed in the first thread: %d\n", arr[i]);
-        total = total + arr[i];
+        firstOutput = firstOutput + arr[i];
     }
     printf("Value of the first thread: %d\n\n", total);
     return 0;
 }
+
 // Second thread method with output
     void *sub1(void *ptr){
     char *message;
     message = (char *) ptr;
     printf("%s \n",message);
     int arr2[halfArr];
+    int secondHalf = 0;
     int secondOutput;
-    for (int i = 0; i < halfArr; i++){
-        arr[i] = arr[i];
+    for (int i = halfArr; i < completeArr; i++){
+        arr2[secondHalf] = arr[i];
         printf("Numbers placed in the second thread: %d\n", arr[i]);
-        total = total + arr[i];
+        secondOutput = secondOutput + arr2[secondHalf];
+        secondHalf++;
     }
-    printf("Value of the second thread: %d\n\n", total);
+    printf("Value of the second thread: %d\n\n", secondOutput);
     return 0;
-
-
+    }
